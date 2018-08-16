@@ -5,7 +5,6 @@ const gulp = require('gulp'),
       uglifyES = require('uglify-es'),
       rename = require('gulp-rename'),
       maps = require('gulp-sourcemaps'),
-      gutil = require('gulp-util'),
       uglify = require('gulp-uglify'),
       composer = require('gulp-uglify/composer'),
       pump = require('pump');
@@ -14,7 +13,7 @@ const gulp = require('gulp'),
 // new try for minification
 const minify = composer(uglifyES, console);
 
-gulp.task('handleJs', ['concatScripts'], function (cb) {
+gulp.task('minifyScripts', ['concatScripts'], function (cb) {
   var options = {};
 
   pump([
@@ -33,11 +32,4 @@ gulp.task('concatScripts', function (){
     .pipe(concat('concatApp.js'))
     .pipe(maps.write('./'))
     .pipe(gulp.dest('js'));
-});
-
-gulp.task("minifyScripts", ['concatScripts'], function(code) {
-  return gulp.src('js/concatApp.js')
-    .pipe(uglify.minify(code))
-    .pipe(rename('concatApp.min.js'))
-    .pipe(gulp.dest('js'))
 });
