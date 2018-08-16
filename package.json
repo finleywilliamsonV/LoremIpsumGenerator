@@ -1,0 +1,21 @@
+{
+  "name": "LoremIpsum",
+  "version": "1.0.0",
+  "description": "Site to generate Lorem Ipsum text",
+  "main": "app.js",
+  "author": "flwv",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "gutil": "^1.6.4",
+    "pump": "^3.0.0"
+  }
+}
