@@ -2,10 +2,30 @@
 
 const gulp = require('gulp'),
       concat = require('gulp-concat'),
-      uglify = require('gulp-uglify'),
+      uglifyES = require('uglify-es'),
       rename = require('gulp-rename'),
       maps = require('gulp-sourcemaps'),
-      gutil = require('gulp-util');
+      gutil = require('gulp-util'),
+      uglify = require('gulp-uglify'),
+      composer = require('gulp-uglify/composer'),
+      pump = require('pump');
+
+
+// new try for minification
+const minify = composer(uglifyES, console);
+
+gulp.task('handleJs', ['concatScripts'], function (cb) {
+  var options = {};
+
+  pump([
+      gulp.src('js/concatApp.js'),
+      minify(options),
+      rename('concatApp.min.js'),
+      gulp.dest('js')
+    ],
+    cb
+  );
+});
 
 gulp.task('concatScripts', function (){
   return gulp.src(['app.js', 'router.js', 'renderer.js', 'loremIpsumGenerator.js'])
@@ -15,20 +35,9 @@ gulp.task('concatScripts', function (){
     .pipe(gulp.dest('js'));
 });
 
-gulp.task("minifyScripts", ['concatScripts'], function() {
+gulp.task("minifyScripts", ['concatScripts'], function(code) {
   return gulp.src('js/concatApp.js')
-    .pipe(uglify())
-    .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+    .pipe(uglify.minify(code))
     .pipe(rename('concatApp.min.js'))
     .pipe(gulp.dest('js'))
-});
-
-const pump = require('pump');
-
-gulp.task('uglify-error-debugging', ['concatScripts'], function (cb) {
-  pump([
-    gulp.src('js/concatApp.js'),
-    uglify(),
-    gulp.dest('js')
-  ], cb);
 });

@@ -1,4 +1,4 @@
-const router = require('../router.js');
+const router = require('./router.js');
 
 // Problem: Create a site that generates Lorem Ipsum text
 // Solution: Use Node.js to generate content and serve via HTTP
@@ -26,8 +26,8 @@ server.listen(port, hostname, () => {
   console.log(`                  LOREM IPSUM GENERATOR` + "\n\n");
   console.log(`   ***   Server running at http://${hostname}:${port}/  ***`);
 })
-let renderer = require('../renderer.js');
-let loremIpsumGenerator = require('../loremIpsumGenerator.js');
+let renderer = require('./renderer.js');
+let loremIpsumGenerator = require('./loremIpsumGenerator.js');
 let queryString = require('querystring');
 
 // Handle HTTP route GET for generator
