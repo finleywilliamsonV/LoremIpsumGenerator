@@ -24,5 +24,15 @@ function mergeValues(values, content) {
   return content;
 }
 
+// function that imports css
+function css(templateName, response) {
+  // read the template file
+  let fileContents = fs.readFileSync('./styles/' + templateName + '.css', {encoding: 'utf8'});
+
+  // write out to the response
+  response.write(fileContents);
+}
+
 
 module.exports.view = view;
+module.exports.css = css;

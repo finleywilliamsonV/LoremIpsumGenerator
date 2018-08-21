@@ -18,5 +18,8 @@
     "gutil": "^1.6.4",
     "pump": "^3.0.0",
     "uglify-es": "^3.3.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }

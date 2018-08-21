@@ -7,7 +7,17 @@ const gulp = require('gulp'),
       maps = require('gulp-sourcemaps'),
       uglify = require('gulp-uglify'),
       composer = require('gulp-uglify/composer'),
-      pump = require('pump');
+      pump = require('pump'),
+      nodemon = require('nodemon');
+
+// run nodemon on default
+gulp.task('default', () => {
+  console.log(' - nodemon started -');
+  nodemon({
+    script: 'app.js',
+    ext: 'js json css'
+  })
+});
 
 
 // new try for minification

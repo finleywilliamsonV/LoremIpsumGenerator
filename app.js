@@ -16,6 +16,10 @@ const server = http.createServer( (request, response) => {
 	console.log(`\napp.js -> Request URL: ${request.url}`);
   console.log('_______________________________________________');
   
+  // begin style route
+  console.log('\nStarting style route');
+  router.style(request, response);
+
   // begin generator route
   console.log('\nStarting generator route');
   router.generator(request, response);

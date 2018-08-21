@@ -58,4 +58,18 @@ function generator(request, response) {
   }
 }
 
+// create a function to serve the CSS file
+function style(req, res) {
+	console.log("router.style() -> CSS Request URL: " + req.url)
+	console.log("router.style() -> CSS Request Method: " + req.method)
+
+	if (req.url.indexOf(".css") !== -1) {
+		console.log(" - inside style route");
+
+    renderer.css("main", res);
+    res.end();
+  }
+}
+
 module.exports.generator = generator;
+module.exports.style = style;
