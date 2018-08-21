@@ -27,7 +27,7 @@ gulp.task('minifyScripts', ['concatScripts'], function (cb) {
 });
 
 gulp.task('concatScripts', function (){
-  return gulp.src(['app.js', 'router.js', 'renderer.js', 'loremIpsumGenerator.js'])
+  return gulp.src(['renderer.js', 'router.js', 'app.js', 'loremIpsumGenerator.js'])
     .pipe(maps.init())
     .pipe(concat('concatApp.js'))
     .pipe(maps.write('./'))
