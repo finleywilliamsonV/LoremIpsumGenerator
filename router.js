@@ -33,6 +33,17 @@ function generator(request, response) {
         var query = queryString.parse(postBody.toString());
         console.log('\nPOST query: ', query);
 
+        // use default values if none specified
+        if (!query.quantity || query.quantity >= 0) {
+          if (query.selected === "Paragraphs") {
+            query.quantity = 3;
+          } else if (query.selected === "Words") {
+            query.quantity = 100;
+          } else {
+            query.quantity = 10;
+          }
+        }
+
         let tempText = loremIpsumGenerator.generateText(query.quantity, query.selected);
         let values = {
           quantity_selected: query.quantity,
