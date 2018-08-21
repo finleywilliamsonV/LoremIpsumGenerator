@@ -34,7 +34,7 @@ function generator(request, response) {
         console.log('\nPOST query: ', query);
 
         // use default values if none specified
-        if (!query.quantity || query.quantity >= 0) {
+        if (!query.quantity || query.quantity <= 0) {
           if (query.selected === "Paragraphs") {
             query.quantity = 3;
           } else if (query.selected === "Words") {
