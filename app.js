@@ -26,7 +26,7 @@ const server = http.createServer( (request, response) => {
 const hostname = '127.0.0.1';
 const port = process.env.PORT || '3000';
 
-server.listen(port, hostname, () => {
+server.listen(port, () => {
 	console.log("\n");
   console.log(`                  LOREM IPSUM GENERATOR` + "\n\n");
   console.log(`   ***   Server running at http://${hostname}:${port}/  ***`);
