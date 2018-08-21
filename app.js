@@ -6,9 +6,6 @@ const router = require('./router.js');
 // Create a Web Server
 const http = require('http');
 
-const hostname = '127.0.0.1';
-const port = '3000'
-
 const server = http.createServer( (request, response) => {
 
   // Log Request URL
@@ -24,6 +21,10 @@ const server = http.createServer( (request, response) => {
   console.log('\nStarting generator route');
   router.generator(request, response);
 });
+
+
+const hostname = '127.0.0.1';
+const port = process.env.PORT || '3000';
 
 server.listen(port, hostname, () => {
 	console.log("\n");
