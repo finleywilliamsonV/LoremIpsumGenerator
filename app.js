@@ -1,4 +1,5 @@
 const router = require('./router.js');
+const MongoClient = require('./mongoClient.js');
 
 // Problem: Create a site that generates Lorem Ipsum text
 // Solution: Use Node.js to generate content and serve via HTTP
